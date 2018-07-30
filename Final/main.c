@@ -6,6 +6,8 @@
 #include "Gestion.h"
 #define NOM_ARCH "datos.csv"
 #define NOM_ARCH2 "datos_comp.csv"
+#define NOM_ARCH3 "datos_dupl.csv"
+#define NOM_ARCH4 "datos_sin.csv"
 
 int main()
 {
@@ -26,9 +28,9 @@ int main()
 
      while(seguir=='S')
      {
-         vista_ShowMenu("1:Altas\n2:Completar\n3:Comprobar\n4:Generar y Listar\n");
+         vista_ShowMenu("1:Altas\n2:Completar\n3:Comprobar\n4:Generar y Listar Sin Repetir\n5:Generar y Listar Repetidos\n");
          scanf("%d",&opcion);
-        ValidaMenu(opcion,0,4);
+        ValidaMenu(opcion,0,5);
           switch(opcion)
             {
             case 1:
@@ -42,20 +44,42 @@ int main()
                 break;
             case 3:
                 vista_ingresarTexto(texto,21,"Ingrese un texto");
-                gets(texto);
+               if(gestion_Existen_Letras(ListaLetras,gestion_compara_con_String,texto)==0)
+                {
+                    printf("Existen las letras\n");
+                    system("pause");
+                }
+                else
+                {
+                    printf("No existen las letras\n");
+                    system("pause");
+                }
                 break;
             case 4:
                 ListSinRepetir=gestion_eliminaDuplicados(ListaLetras,gestion_ComparaLetra);
                 if(ListSinRepetir !=NULL)
                 {
                     vista_MuestraElementos(ListSinRepetir,"LISTADO DE LETRAS",vista_Muestra1UnElemento,0,ListSinRepetir->len(ListSinRepetir),25);
+                    GuardarArchivoT(ListaLetras,NOM_ARCH4);
                 }
                 else if(ListSinRepetir == NULL)
                 {
                     printf("Lista vacia\n");
                     system("pause");
                 }
-
+                break;
+            case 5:
+                ListRepetidas=gestion_Duplicados(ListaLetras,gestion_ComparaLetra);
+                if(ListRepetidas != NULL)
+                {
+                    vista_MuestraElementos(ListRepetidas,"LISTADO DE LETRAS",vista_Muestra1UnElemento,0,ListRepetidas->len(ListRepetidas),25);
+                    GuardarArchivoT(ListaLetras,NOM_ARCH3);
+                }
+                else if(ListRepetidas == NULL)
+                {
+                    printf("Lista vacia\n");
+                    system("pause");
+                }
                 break;
             case 0:
                 seguir='N';

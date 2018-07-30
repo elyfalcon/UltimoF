@@ -85,13 +85,15 @@
 	<string.h>
 	"ArrayList.h"
 
-1532955737 source:c:\test\falcon\final\gestioin.c
+1532962813 source:c:\test\falcon\final\gestioin.c
 	<stdio.h>
 	<stdlib.h>
 	"Archivo.h"
 	"ArrayList.h"
 	"vista.h"
+	"Letra.h"
 	"tools.h"
+	"Gestion.h"
 
 1532952054 c:\test\falcon\final\vista.h
 	<stdio.h>
@@ -109,7 +111,7 @@
 	<stdlib.h>
 	"Letra.h"
 
-1532955828 source:c:\test\falcon\final\main.c
+1532962554 source:c:\test\falcon\final\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayList.h"
@@ -129,5 +131,5 @@
 	"Letra.h"
 	"ArrayList.h"
 
-1532955721 c:\test\falcon\final\gestion.h
+1532962163 c:\test\falcon\final\gestion.h
 

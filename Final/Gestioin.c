@@ -4,8 +4,9 @@
 #include "Archivo.h"
 #include "ArrayList.h"
 #include "vista.h"
-
+#include "Letra.h"
 #include "tools.h"
+#include "Gestion.h"
 
 ArrayList* Lista_Localidad(ArrayList* this)
 {
@@ -83,8 +84,8 @@ ArrayList* gestion_eliminaDuplicados(ArrayList* this, int (*pFunc)(void* ,void*)
                 {
                     if(pFunc(al_get(ListAux,i),al_get(ListAux,j))==0)
                     {
-                     // ListDupl->add(ListAux,j);
-                      ListAux->pop(ListAux,j);
+
+                     ListAux->pop(ListAux,j);
                     }
                     else
                     {
@@ -93,6 +94,37 @@ ArrayList* gestion_eliminaDuplicados(ArrayList* this, int (*pFunc)(void* ,void*)
                 }//FIN for(int j=i+1;j < ListAux->len(ListAux) ;j++)
             }//FIN for(int i=0; i< ( ListAux->len(ListAux) ) -1 ;i++)
         }
+                ListAux->sort(ListAux,compara_elementos_Estructura,1);
+          }
+    return ListAux;
+}
+ArrayList* gestion_Duplicados(ArrayList* this, int (*pFunc)(void* ,void*))
+{
+    ArrayList* ListAux;
+    ArrayList* ListDupl;
+    if(this!= NULL && pFunc!=NULL )
+    {
+        ListAux=al_clone(this);
+        //ListDupl=al_newArrayList();
+        if(ListAux!=NULL)
+        {
+            for(int i=0; i< ( ListAux->len(ListAux) ) -1 ;i++)
+            {
+                for(int j=i+1;j < ListAux->len(ListAux);j++ )
+                {
+                    if(pFunc(al_get(ListAux,i),al_get(ListAux,j))==0)
+                    {
+
+                    }
+                    else
+                    {
+                    ListAux->pop(ListAux,j);
+                    j=i+1;
+                    }
+                }//FIN for(int j=i+1;j < ListAux->len(ListAux) ;j++)
+            }//FIN for(int i=0; i< ( ListAux->len(ListAux) ) -1 ;i++)
+        }
+        ListAux->sort(ListAux,compara_elementos_Estructura,0);
     }
     return ListAux;
 }
@@ -151,6 +183,28 @@ int gestion_Completar(ArrayList *this,int (*pFunc)(void*) )
         }//if(this->isEmpty(this)==0)
 
     }//if(this!=NULL && Titulo!=NULL)
+    return retorno;
+}
+int compara_elementos_Estructura(void* pElementA,void* pElementB)
+{
+    int retorno;
+    eLetra *tmp_1;
+    eLetra *tmp_2;
+    tmp_1=(eLetra * ) pElementA;
+    tmp_2=(eLetra * ) pElementB;
+
+    if(tmp_1->letra > tmp_2->letra)
+    {
+        retorno=1;
+    }
+    else
+    {
+        retorno=-1;
+        if(tmp_1->letra < tmp_2->letra)
+        {
+            retorno=0;
+        }
+    }
     return retorno;
 }
 
@@ -325,19 +379,112 @@ int gestion_BuscarYGuardar(ArrayList* this,ArrayList* that)
     {
         prd_1=(eLetra * ) eLetraA;
         prd_2=(eLetra * ) eLetraB;
-
-        retorno=strcmp( prd_1->letra,prd_2->letra );
+        if(prd_1->letra == prd_2->letra)
+       // retorno=strcmp( prd_1->letra,prd_2->letra );
+       retorno=0;
     }
     return retorno;
 }
-/*int gestion_compareCon(void*pLocalidad, char* local)
+
+int gestion_Existen_Letras(ArrayList* this , int (*functionFilter)(void* ,void*),char * cadLetras)
+{//devuelve 1 si estan todas las letras.. 0 si no estan.
+
+    int retorno=-1;
+    if(this!=NULL && functionFilter!=NULL && cadLetras!=NULL )
+    {
+        retorno=1;
+
+        for(int i=0;i<strlen(cadLetras);i++)
+        {
+            for(int j=0;j<this->len(this);j++)
+            {
+                if( functionFilter(cadLetras[i],this->get(this,j) )== 0 )
+                {//Existe=0    NO esta la letra
+                    retorno=0;
+                    break;
+                }
+            }//fin for recorre ArrayList
+        }//fin for recorre caracteres string
+        return retorno;
+    }
+}
+int gestion_compara_con_String(void* letra,void* pElement)
 {
-    int retorno=0;
-    if (stricmp(((eProducto*)pLocalidad)->localidad,local)==0 )
+    int retorno;
+    eLetra *tmp_1;
+    tmp_1=(eLetra * ) pElement;
+    char Aux=(char) letra;
+    //char letra;
+
+    if(tmp_1->letra > Aux)
     {
         retorno=1;
     }
+    else
+    {
+        retorno=-1;
+        if(tmp_1->letra == Aux)
+        {
+            retorno=0;
+        }
 
+    }
     return retorno;
+}
+/*void gestion_verifica(ArrayList* this, char* palabra )
+{
+    int retorno=0;
+    eLetra* aux1=NULL;
+    eLetra* aux2=NULL;
+    int i,j;
+    int existe=0;
+    int longitud;
+    ArrayList*aux;
+    int auxiliarCuenta;
+
+
+    if(this!= NULL)
+    {
+        aux=al_clone(this);
+        auxiliarCuenta=aux->len(aux);
+
+        if(aux!= NULL)
+        {
+            longitud=strlen(palabra);
+
+            for (i=0; i<longitud; i++)
+            {
+                for (j = 0; j < auxiliarCuenta ; j++)
+                {
+                    aux1=(eLetra*)al_get(aux,j);
+
+                    if(aux1!=NULL)
+                    {
+                        if (palabra[j]==letra_get_letra(aux1))
+                        {
+                            existe++;
+                           al_remove(aux,j);
+                            auxiliarCuenta--;
+                            break;
+                        }
+
+                    }
+                }
+            }
+            if (existe ==longitud)
+            {
+                printf("\nSE PUEDE FORMAR");
+                system("pause");
+
+            }
+            else if(existe != longitud)
+            {
+                printf("\nNO SE PUEDE FORMAR");
+                system("pause");
+            }
+
+        }// fin (if aux
+    }//fin if(this !=
+
 }
 */
