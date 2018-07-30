@@ -1,0 +1,45 @@
+
+eLetra* nuevo(void)
+{
+    eLetra* returnAux;
+    returnAux = (eLetra*)malloc(sizeof(eLetra));
+    return returnAux;
+}
+
+
+char* letra_get_letra(eLetra* this)
+{
+    return this->letra;
+}
+char* letra_get_nombre(eLetra* this)
+{
+    return this->nombre;
+}
+char* letra_get_vocal(eLetra* this)
+{
+    return this->vocal;
+}
+int letra_get_conson(eLetra* this)
+{
+    return this->consonante;
+}
+
+//  ------ SET -------
+int prod_set_Id(eProducto* this, int dato)
+{
+    if(this!=NULL && dato !=NULL)
+    {
+        this->id = dato;
+    }
+    return 0;
+}
+int letra_set_nombre(eProducto* this, char* dato)
+{
+    strcpy(this->nombre,dato);
+    return 0;
+}
+int letra_set_vocal(eProducto* this, char* dato)
+{
+    strcpy(this->vocal,dato);
+    return 0;
+}

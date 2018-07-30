@@ -1,0 +1,133 @@
+# depslib dependency file v1.0
+1532807101 source:c:\eli\utn\finales\final3\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531822730 c:\eli\utn\finales\final3\arraylist.h
+
+1532903232 source:c:\eli\utn\finales\final3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Letra.h"
+
+1532904083 source:c:\eli\utn\finales\final3\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Letra.h"
+	"Archivo.h"
+
+1532843489 c:\eli\utn\finales\final3\archivo.h
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1532897539 source:c:\eli\utn\finales\final3\tools.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+
+1532897446 source:c:\eli\utn\finales\final3\gestioin.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+	"ArrayList.h"
+	"vista.h"
+	"tools.h"
+
+1532897320 c:\eli\utn\finales\final3\vista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1532841068 c:\eli\utn\finales\final3\tools.h
+	<string.h>
+
+1532897507 source:c:\eli\utn\finales\final3\vista.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+	"ArrayList.h"
+
+1532900572 c:\eli\utn\finales\final3\letra.h
+
+1532904083 source:c:\eli\utn\finales\final3\letra.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"Letra.h"
+
+1532953512 source:c:\test\falcon\final\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Letra.h"
+	"Archivo.h"
+
+1532902356 c:\test\falcon\final\arraylist.h
+
+1532902356 c:\test\falcon\final\letra.h
+
+1532902356 c:\test\falcon\final\archivo.h
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1532902356 source:c:\test\falcon\final\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1532955737 source:c:\test\falcon\final\gestioin.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+	"ArrayList.h"
+	"vista.h"
+	"tools.h"
+
+1532952054 c:\test\falcon\final\vista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Letra.h"
+
+1532902356 c:\test\falcon\final\tools.h
+	<string.h>
+
+1532902356 source:c:\test\falcon\final\letra.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"Letra.h"
+
+1532955828 source:c:\test\falcon\final\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Letra.h"
+	"vista.h"
+	"Gestion.h"
+
+1532902356 source:c:\test\falcon\final\tools.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+
+1532952131 source:c:\test\falcon\final\vista.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+	"Letra.h"
+	"ArrayList.h"
+
+1532955721 c:\test\falcon\final\gestion.h
+

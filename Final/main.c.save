@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "
+#include "Letra.h"
+#define NOM_ARCH "datos.csv"
+
+int main()
+{
+    int opcion;
+    char seguir='S';
+
+    ArrayList* ListaLetras;
+    ListaLetras=al_newArrayList();
+    if(ListaLetras !=NULL)
+    {
+
+     while(seguir=='S')
+     {
+         vista_ShowMenu("1:Altas\n2:Completar\n3:Listar\n");
+         scanf("%d",&opcion);
+        ValidaMenu(opcion,0,4);
+          switch(opcion)
+            {
+            case 1:
+                cargarDesdeArchivo(ListaLetras,NOM_ARCH);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 0:
+                seguir='N';
+                break;
+                }//fin switch
+     }//fin while
+    }//fin if
+
+    return 0;
+}
